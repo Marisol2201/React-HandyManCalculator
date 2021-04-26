@@ -1,6 +1,11 @@
 import React from "react";
+import {Redirect} from 'react-router-dom';
 
 class TechForm extends React.Component {
+
+    onSubmit = () => {
+        return  <Redirect to="/report" />
+    }
 
     render() {
         return (
@@ -56,6 +61,7 @@ class TechForm extends React.Component {
                 </div>
                 </div>
             </div>
+            <button onClick={this.onSubmit}>Guardar</button>
             </>
         );
     }

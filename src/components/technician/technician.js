@@ -20,7 +20,7 @@ class Technicians extends Component {
         let technicianView = [];
         this.state.technician.forEach(function(tech){
             technicianView.push(
-                <h2>{tech.name}</h2>
+                <h3 id="technicianName">Nombre: {tech.name}</h3>
             )
         });
         return (

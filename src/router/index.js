@@ -1,11 +1,12 @@
 import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
-import GetWeekData from "../components/week/getWeekData"
-import Form from "../components/week/form"
+import GetWeekData from "../components/week/getWeekData";
+import Form from "../components/week/form";
 import Calendar from "../components/week/calendar/calendar";
-import Technicians from "../components/technician/technician"
-import TechForm from "../components/technician/index"
+import Technicians from "../components/technician/technician";
+import ServiceType from "../components/serviceType/serviceType";
+import TechForm from "../components/technician/technicianForm";
 
 
 function AppRouter() {
@@ -16,12 +17,22 @@ function AppRouter() {
             <Form />
             <Calendar />
           </Route>
-          <Route path="/weeks">
+          <Route path="/report">
+            <Technicians />
+            <ServiceType />
             <GetWeekData />
           </Route>
           <Route path="/technicians">
-            <TechForm />
             <Technicians />
+          </Route>
+          <Route path="/services">
+            <ServiceType />
+          </Route>
+          <Route path="/weeks">
+            <GetWeekData />
+          </Route>
+          <Route path="/tech">
+            <TechForm />
           </Route>
         </Switch>
       </BrowserRouter>
@@ -29,20 +40,3 @@ function AppRouter() {
   }
   
   export default AppRouter;
-  
-//   import Form from "./components/form"
-// import Calendar from "./components/calendar/calendar";
-// import Home from "./components/getWeekData"
-// import './App.css';
-
-// function App() {
-//   return (
-//     <div>
-//       <Form />
-//       <Calendar />
-//       <Home />
-//     </div>
-//   );
-// }
-
-// export default App;
