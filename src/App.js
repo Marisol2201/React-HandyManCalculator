@@ -1,9 +1,10 @@
-import Calendar from "./components/calendar";
+
+import BrowserRouter from "./router/index"
 import './App.css';
 
 function App() {
   return (
-    <Calendar />
+    <BrowserRouter />
   );
 }
 
