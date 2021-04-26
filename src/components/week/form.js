@@ -12,7 +12,7 @@ class Form extends React.Component {
             {/* HTML Form (wrapped in a .bootstrap-iso div) */}
             <div className="bootstrap-iso">
                 <div className="container-fluid">
-                <div className="row">
+                <div id="firstRow" className="row">
                     <div className="col-md-6 col-sm-6 col-xs-12">
                     <form method="post">
                         <div className="form-group ">
@@ -42,7 +42,7 @@ class Form extends React.Component {
                             </label>
                             </div>
                             <div className="checkbox">
-                            <label className="checkbox">
+                            <label id="secondLabelCheckbox" className="checkbox">
                                 <input name="checkbox" type="checkbox" defaultValue="Servicio2" />
                                 Servicio2
                             </label>

@@ -34,7 +34,7 @@ class Calendar extends React.Component {
       method: 'POST',
       headers: { 'Content-Type': 'application/json'},
       dataType: 'json',
-      body: JSON.parse('[]'),
+      body: [],
     })
     .then(function(response) {
         console.log('response =', response);
@@ -63,7 +63,7 @@ class Calendar extends React.Component {
                 className="form-control"
               />
             </div>
-            <button className="btn btn-primary">Fecha de inicio</button>
+            <button id="initialDateButton" className="btn btn-primary">Fecha de inicio</button>
             <div className="form-group">
               <DatePicker
                 selected={ this.state.startDate }
@@ -76,9 +76,9 @@ class Calendar extends React.Component {
                 className="form-control"
               />
             </div>
-            <button className="btn btn-primary">Fecha de finalización</button>
+            <button id="secondDateButton" className="btn btn-primary">Fecha de finalización</button>
             <div>
-                <button id="buttonD" className="btn btn-primary " name="submit" type="submit">
+                <button className="btn btn-primary " name="submit" type="submit">
                 Guardar
                 </button>
             </div>

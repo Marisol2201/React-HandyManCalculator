@@ -1,5 +1,13 @@
-#startD, #buttonD {
-    margin-top:5%;
-    margin-bottom:5%;
+#firstRow {
+    margin-left: 35%;
+    font-size: initial;
 }
 
+#secondLabelCheckbox {
+    margin-bottom: 20%;
+}
+
+#initialDateButton, #secondDateButton {
+    margin-top: -1%;
+    margin-bottom: 5%;
+}

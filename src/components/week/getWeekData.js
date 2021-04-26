@@ -1,89 +1,65 @@
 import React, { Component } from 'react';
+import { Table, Thead, Tbody, Tr, Th, Td } from 'react-super-responsive-table';
+import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css';
 
 class GetWeekData extends Component {
     constructor(props) {
         super(props);
         this.state = { 
-            done: false,
-            items: []
+            week: []
         };
     }
     
     componentDidMount() {
-        fetch(`http://localhost:8080/weeks`, {
-            method: 'GET'
-        })
-        .then(result=>result.json())
-        .then(items=>this.setState({
-            done: true,
-            items
-        }))
+        fetch(`http://localhost:8080/weeks`)
+        .then(response=>response.json())
+        .then(week=>this.setState({week: week}))
     }
 
     render() {
-        const Data = (props) => (
-            <ul>
-                {
-                    props.items.map((item, i) => {
-                        return <li key={i}>{item}</li>
-                    })
-                }
-            </ul>
-        )
-        return(
+        let weekView = [];
+        this.state.week.forEach(function(w){
+            weekView.push(
+                <Table>
+                    <Thead>
+                        <Tr>
+                        <Th>Semana</Th>
+                        <Th>Horas semana</Th>
+                        <Th>Normales</Th>
+                        <Th>Día normales</Th>
+                        <Th>Noche normales</Th>
+                        <Th>Dominicales normales</Th>
+                        <Th>Extra</Th>
+                        <Th>Día extra</Th>
+                        <Th>Noche Extra</Th>
+                        <Th>Dominicales extra</Th>
+                        </Tr>
+                    </Thead>
+                    <Tbody>
+                        <Tr>
+                        <Td>{w.id}</Td>
+                        <Td>{w.totalWeekHours}</Td>
+                        <Td>{w.totalWeekNormalHours}</Td>
+                        <Td>{w.weekNormalDaytimeHours}</Td>
+                        <Td>{w.weekNormalNightHours}</Td>
+                        <Td>{w.sundayNormalHours}</Td>
+                        <Td>{w.totalWeekExtraHours}</Td>
+                        <Td>{w.weekExtraDaytimeHours}</Td>
+                        <Td>{w.weekExtraNightHours}</Td>
+                        <Td>{w.sundayExtraHours}</Td>
+                        </Tr>
+                    </Tbody>
+                </Table>
+            )
+        });
+        return (
             <div>
-                {this.state.items.isArray ? (
-                    <Data items={this.state.items} />
-                ) : (
-                    <div className="spinner-border text-primary" role="status">
-                        <span className="sr-only">Loading...</span>
-                    </div>
-                )}
+                <ul>
+                    {weekView}
+                </ul>
             </div>
-        )
+        );
     }
 }
 
 export default GetWeekData;
-
-
-// import React from "react";
-
-// export function GetWeekData() {
-//     const [operation, setOperation] = React.useState({
-//         loading: false,
-//         data: {},
-//         error: undefined,
-//     });
-
-//     React.useEffect(() => {
-//         setOperation({
-//         loading: true,
-//         data: {},
-//         error: undefined,
-//         });
-//     fetch(`http://localhost:8080/weeks/`, {
-//         method: "GET",
-//     })
-//         .then((response) => response.json())
-//         .then((json) =>
-//             setOperation({
-//             loading: false,
-//             data: json,
-//             error: undefined,
-//             })
-//         )
-//         .catch((error) =>
-//             setOperation({
-//             loading: false,
-//             data: {},
-//             error,
-//             })
-//         );
-//     }, [],
-// );
-
-
-// return (operation, 
-//     <button>Holi</button>
-// )}
